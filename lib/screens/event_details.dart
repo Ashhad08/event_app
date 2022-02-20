@@ -1,3 +1,4 @@
+import 'package:event_app/widgets/bottom_navigation.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,46 +16,53 @@ class _EventDetailsState extends State<EventDetails> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const BottomNavigationWidget()));
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-              const EdgeInsets.only( left: 30, right: 30, bottom: 50),
+          padding: const EdgeInsets.only(left: 30, right: 30, bottom: 50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Hackathon',
+              const Text('Hackathon',
                   style: TextStyle(
                       fontSize: 21,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600)),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Container(
+              SizedBox(
                 height: 150,
                 width: double.infinity,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image(
+                  child: const Image(
                     fit: BoxFit.cover,
                     image: AssetImage('assets/images/event2.png'),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.calendar_today_rounded,
                         size: 20,
@@ -69,11 +77,11 @@ class _EventDetailsState extends State<EventDetails> {
                               fontWeight: FontWeight.w300)),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 7,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.access_time,
                         size: 20,
@@ -88,11 +96,11 @@ class _EventDetailsState extends State<EventDetails> {
                               fontWeight: FontWeight.w300)),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 7,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.location_on_outlined,
                         size: 20,
@@ -109,16 +117,30 @@ class _EventDetailsState extends State<EventDetails> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text('Information',
+              const Text('Information',
                   style: TextStyle(
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600)),
-              Text(
-                  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.',
+              const Text(
+                  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,'
+                  ' sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam'
+                  ' erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea '
+                  'rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor'
+                  ' sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy '
+                  'eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
+                  ' At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,'
+                  ' no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,'
+                  ' consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et '
+                  'dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo'
+                  ' dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem '
+                  'ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed '
+                  'diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam'
+                  ' voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd '
+                  'gubergren, no sea.',
                   style: TextStyle(
                       fontSize: 12,
                       fontFamily: 'Poppins',

@@ -1,3 +1,4 @@
+import 'package:event_app/widgets/bottom_navigation.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +16,17 @@ class _FilterationState extends State<Filteration> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const BottomNavigationWidget()));
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       backgroundColor: Colors.white,
@@ -29,7 +38,7 @@ class _FilterationState extends State<Filteration> {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text('Filteration',
                       style: TextStyle(
                           fontSize: 21,
@@ -58,13 +67,13 @@ class _FilterationState extends State<Filteration> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.calendar_today_rounded,
                     size: 20,
@@ -80,19 +89,17 @@ class _FilterationState extends State<Filteration> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
-              height: 1,
-            ),
-            SizedBox(
+            const Divider(),
+            const SizedBox(
               height: 10,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.access_time,
                     size: 20,
@@ -108,19 +115,17 @@ class _FilterationState extends State<Filteration> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
-              height: 1,
-            ),
-            SizedBox(
+            const Divider(),
+            const SizedBox(
               height: 10,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.location_on_outlined,
                     size: 20,
@@ -136,13 +141,11 @@ class _FilterationState extends State<Filteration> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
-              height: 1,
-            ),
-            SizedBox(
+            const Divider(),
+            const SizedBox(
               height: 200,
             ),
             Padding(
@@ -151,15 +154,15 @@ class _FilterationState extends State<Filteration> {
                 children: [
                   RaisedButtonWidget(
                       buttonText: "View Result", onPressed: () {}),
-                  SizedBox(
+                  const SizedBox(
                     height: 7,
                   ),
-                  Text('Clear Filter',
+                  const Text('Clear Filter',
                       style: TextStyle(
                           fontSize: 12,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600)),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                 ],

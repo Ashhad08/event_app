@@ -1,3 +1,5 @@
+import 'package:event_app/screens/entertainment_info.dart';
+import 'package:event_app/widgets/bottom_navigation.dart';
 import 'package:event_app/widgets/info_list_tile.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:flutter/material.dart';
@@ -16,58 +18,70 @@ class _FashionInfoState extends State<FashionInfo> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const EntertainmentInfo()));
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-              const EdgeInsets.only( left: 30, right: 30, bottom: 30),
+          padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text('Fashion Info',
+              const Text('Fashion Info',
                   style: TextStyle(
                       fontSize: 21,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600)),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
-              Text('Enter your fashion information',
+              const Text('Enter your fashion information',
                   style: TextStyle(
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       color: Color(0xff7E7E7E),
                       fontWeight: FontWeight.w500)),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               InfoListTile(
                 text: 'Shirt size',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               InfoListTile(
                 text: 'Shoes size',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               InfoListTile(
                 text: 'Fashion style',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 150,
               ),
-              RaisedButtonWidget(buttonText: "Continue", onPressed: () {})
+              RaisedButtonWidget(
+                  buttonText: "Save information",
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BottomNavigationWidget()));
+                  })
             ],
           ),
         ),

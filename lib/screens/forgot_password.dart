@@ -1,3 +1,5 @@
+import 'package:event_app/screens/login.dart';
+import 'package:event_app/screens/verification.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:event_app/widgets/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +22,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const Login()));
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       body: Form(
@@ -35,7 +43,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     SizedBox(
                       height: 200,
                     ),
@@ -55,7 +63,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.black26, width: 0.2),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(20.0),
                           topLeft: Radius.circular(20.0),
                         )),
@@ -64,16 +72,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Center(
+                          const Center(
                               child: Text('Restore your password',
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w500))),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
-                          Center(
+                          const Center(
                               child: Text(
                                   'Enter your email to reset your password',
                                   style: TextStyle(
@@ -81,32 +89,33 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                       fontFamily: 'Poppins',
                                       color: Color(0xff7E7E7E),
                                       fontWeight: FontWeight.w300))),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           TextFormFieldWidget(
-                            isObscureText: false,
-                            isSuffixIcon: false,
                             isFilled: false,
                             isPrefixIcon: false,
                             isHintText: false,
                             controller: _emailController,
                             validator: (val) {
-                              if (val!.isEmpty) {
+                              if (val.isEmpty) {
                                 return "Kindly Enter Your Email";
                               } else {
                                 return null;
                               }
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           RaisedButtonWidget(
                             buttonText: "Continue",
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                return null;
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Verification()));
                               }
                             },
                           )

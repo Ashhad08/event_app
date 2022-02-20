@@ -1,6 +1,9 @@
+import 'package:event_app/screens/forgot_password.dart';
 import 'package:event_app/widgets/otp_container.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:flutter/material.dart';
+
+import 'new_password.dart';
 
 class Verification extends StatefulWidget {
   const Verification({Key? key}) : super(key: key);
@@ -16,9 +19,15 @@ class _VerificationState extends State<Verification> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ForgotPassword()));
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       backgroundColor: Colors.white,
@@ -30,7 +39,7 @@ class _VerificationState extends State<Verification> {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   SizedBox(
                     height: 100,
                   ),
@@ -50,7 +59,7 @@ class _VerificationState extends State<Verification> {
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black26, width: 0.2),
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(20.0),
                         topLeft: Radius.circular(20.0),
                       )),
@@ -58,16 +67,16 @@ class _VerificationState extends State<Verification> {
                     padding: const EdgeInsets.all(30),
                     child: Column(
                       children: [
-                        Center(
+                        const Center(
                             child: Text('Verification Code',
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w500))),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
-                        Center(
+                        const Center(
                             child: Text(
                                 'Enter 6 digit code that you received on your email',
                                 style: TextStyle(
@@ -75,12 +84,12 @@ class _VerificationState extends State<Verification> {
                                     fontFamily: 'Poppins',
                                     color: Color(0xff7E7E7E),
                                     fontWeight: FontWeight.w300))),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             OTPContainer(),
                             SizedBox(
                               width: 10,
@@ -104,18 +113,23 @@ class _VerificationState extends State<Verification> {
                             OTPContainer(),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         RaisedButtonWidget(
                           buttonText: "Continue",
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const NewPassword()));
+                          },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                               text:
                                   'if you don’t receive the email in few minutes please check your spam folder or click ',
                               style: TextStyle(
@@ -155,10 +169,3 @@ class _VerificationState extends State<Verification> {
     );
   }
 }
-// child: Text(
-//     'if you don’t receive the email in few minutes please check your spam folder or click here  to receive another code',
-//     style: TextStyle(
-//         fontSize: 14,
-//         fontFamily: 'Poppins',
-//         color: Color(0xff7E7E7E),
-//         fontWeight: FontWeight.w300))),

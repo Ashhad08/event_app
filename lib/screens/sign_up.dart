@@ -1,3 +1,4 @@
+import 'package:event_app/screens/login.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:event_app/widgets/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -30,185 +31,180 @@ class _SignUpState extends State<SignUp> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Sign up',
+                const Text('Sign up',
                     style: TextStyle(
                         fontSize: 24,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400)),
-                Text(
+                const Text(
                   'Create new account',
                   style: TextStyle(
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w300),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text('Name',
+                const Text('Name',
                     style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextFormFieldWidget(
-                  isObscureText: false,
-                  isSuffixIcon: false,
                   isFilled: true,
                   isPrefixIcon: false,
                   isHintText: false,
                   controller: _nameController,
                   validator: (val) {
-                    if (val!.isEmpty) {
+                    if (val.isEmpty) {
                       return "Kindly Enter Your Name";
                     } else {
                       return null;
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text('Email',
+                const Text('Email',
                     style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextFormFieldWidget(
-                  isObscureText: false,
-                  isSuffixIcon: false,
                   isFilled: true,
                   isPrefixIcon: false,
                   isHintText: false,
                   controller: _emailController,
                   validator: (val) {
-                    if (val!.isEmpty) {
+                    if (val.isEmpty) {
                       return "Kindly Enter Your Email";
                     } else {
                       return null;
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text('Phone Number',
+                const Text('Phone Number',
                     style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextFormFieldWidget(
-                  isObscureText: false,
-                  isSuffixIcon: false,
                   isFilled: true,
                   isPrefixIcon: false,
                   isHintText: false,
-                  suffixIcon: Icons.check,
                   controller: _phoneNumberController,
                   validator: (val) {
-                    if (val!.isEmpty) {
+                    if (val.isEmpty) {
                       return "Kindly Enter Your Phone Number";
-                    } else if (val!.length < 11) {
+                    } else if (val.length < 11) {
                       return "Kindly Enter Your Full Phone Number";
                     } else {
                       return null;
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text('Password',
+                const Text('Password',
                     style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextFormFieldWidget(
-                  isObscureText: true,
-                  isSuffixIcon: true,
+                  isVisible: true,
+                  isPasswordField: true,
                   isFilled: true,
                   isPrefixIcon: false,
                   isHintText: false,
-                  suffixIcon: Icons.visibility_off,
                   controller: _pswdController,
                   validator: (val) {
-                    if (val!.isEmpty) {
+                    if (val.isEmpty) {
                       return "Kindly Enter Your Password";
-                    } else if (val!.length < 7) {
-                      return "Kindly Enter full passwrod";
+                    } else if (val.length < 7) {
+                      return "Kindly Enter full password";
                     } else {
                       return null;
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text('Confirm Password',
+                const Text('Confirm Password',
                     style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextFormFieldWidget(
-                  isObscureText: true,
-                  isSuffixIcon: true,
+                  isPasswordField: true,
+                  isVisible: true,
                   isFilled: true,
                   isPrefixIcon: false,
                   isHintText: false,
-                  suffixIcon: Icons.visibility_off,
                   controller: _confirmpswdController,
                   validator: (val) {
-                    if (val!.isEmpty) {
+                    if (val.isEmpty) {
                       return "Kindly Confirm Your password";
-                    } else if (!(_confirmpswdController == _pswdController)) {
-                      return 'Password Dose not matched!';
                     } else {
                       return null;
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 RaisedButtonWidget(
                   buttonText: 'Sign up',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      return null;
+                      return;
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('I Already have an account.',
+                    const Text('I Already have an account.',
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500)),
-                    Text('Sign in',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff5AB964)))
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const Login()));
+                      },
+                      child: const Text('Sign in',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff5AB964))),
+                    )
                   ],
                 )
               ],

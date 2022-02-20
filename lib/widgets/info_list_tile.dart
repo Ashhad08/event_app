@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class InfoListTile extends StatefulWidget {
-  @override
   final String text;
 
-  InfoListTile({required this.text});
+   const InfoListTile({Key? key, required this.text}) : super(key: key);
 
+  @override
   _InfoListTileState createState() => _InfoListTileState();
 }
 
@@ -23,10 +23,10 @@ class _InfoListTileState extends State<InfoListTile> {
       child: ListTile(
         title: Text(
           widget.text,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 14, fontFamily: 'Poppins', fontWeight: FontWeight.w500),
         ),
-        trailing: Icon(
+        trailing: const Icon(
           Icons.arrow_drop_down_sharp,
           color: Colors.black,
         ),

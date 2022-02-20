@@ -1,3 +1,4 @@
+import 'package:event_app/screens/profile_setup.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:flutter/material.dart';
 
@@ -19,38 +20,41 @@ class _LocationAccessState extends State<LocationAccess> {
               const EdgeInsets.only(top: 176, left: 36, right: 36, bottom: 30),
           child: Column(
             children: [
-              Image(
+              const Image(
                 image: AssetImage('assets/images/location-access.png'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text('Location Access',
+              const Text('Location Access',
                   style: TextStyle(
                       fontSize: 21,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500)),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                   'Let event app access your location to show you nearby events',
                   style: TextStyle(
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       color: Color(0xff7E7E7E),
                       fontWeight: FontWeight.w400)),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               RaisedButtonWidget(
                 buttonText: 'Enable Location',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const ProfileSetup()));
+                },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text('Don’t Enable',
+              const Text('Don’t Enable',
                   style: TextStyle(
                       fontSize: 14,
                       fontFamily: 'Poppins',

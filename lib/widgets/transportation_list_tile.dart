@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class TransportationListTile extends StatefulWidget {
-  @override
   final String text;
 
-  TransportationListTile({required this.text});
+   const TransportationListTile({Key? key, required this.text}) : super(key: key);
 
+  @override
   _TransportationListTileState createState() => _TransportationListTileState();
 }
 
@@ -15,31 +15,30 @@ class _TransportationListTileState extends State<TransportationListTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey.shade300,
-          width: 0.5,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.grey.shade300,
+            width: 0.5,
+          ),
+          borderRadius: BorderRadius.circular(5),
         ),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: ListTile(
-        title: Text(
-          widget.text,
-          style: TextStyle(
-              fontSize: 14, fontFamily: 'Poppins', fontWeight: FontWeight.w500),
-        ),
-        leading: Checkbox(
-          activeColor: Color(0xffdbf0de),
-          checkColor: Color(0xff5AB964),
-          side: BorderSide(color: Color(0xff5AB964)),
+        child: CheckboxListTile(
           value: isChecked,
           onChanged: (isChecked) {
             setState(() {
               this.isChecked = isChecked!;
             });
           },
-        ),
-      ),
-    );
+          title: Text(
+            widget.text,
+            style: const TextStyle(
+                fontSize: 14,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500),
+          ),
+          activeColor: const Color(0xffdbf0de),
+          checkColor: const Color(0xff5AB964),
+          controlAffinity: ListTileControlAffinity.leading,
+        ));
   }
 }

@@ -1,5 +1,5 @@
+import 'package:event_app/widgets/event_search_field.dart';
 import 'package:event_app/widgets/events_with_info.dart';
-import 'package:event_app/widgets/textformfield.dart';
 import 'package:flutter/material.dart';
 
 class EventScreen extends StatefulWidget {
@@ -10,8 +10,6 @@ class EventScreen extends StatefulWidget {
 }
 
 class _EventScreenState extends State<EventScreen> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +25,7 @@ class _EventScreenState extends State<EventScreen> {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text('All Events',
                       style: TextStyle(
                           fontSize: 21,
@@ -45,16 +43,7 @@ class _EventScreenState extends State<EventScreen> {
                   SizedBox(
                     height: 10,
                   ),
-                  TextFormFieldWidget(
-                    isObscureText: false,
-                    isFilled: true,
-                    isSuffixIcon: true,
-                    isPrefixIcon: true,
-                    isHintText: true,
-                    hintText: 'Search events',
-                    prefixIcon: Icons.search,
-                    suffixIcon: Icons.filter_list,
-                  ),
+                  EventSearchField(),
                   SizedBox(
                     height: 20,
                   ),
@@ -67,14 +56,13 @@ class _EventScreenState extends State<EventScreen> {
               date: 'Jan 10, 2022',
               address: 'Ayub Pak, pindi ',
               time: '12:30PM  ',
+              isSlidable: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
-              height: 1,
-            ),
-            SizedBox(
+            const Divider(),
+            const SizedBox(
               height: 10,
             ),
             EventsInfoWidget(
@@ -83,30 +71,13 @@ class _EventScreenState extends State<EventScreen> {
               date: 'Jan 10, 2022',
               address: 'Ayub Pak, pindi ',
               time: '12:30PM  ',
+              isSlidable: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
-              height: 1,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            EventsInfoWidget(
-              imagePath: 'assets/images/event1.png',
-              title: 'PixaBay Event',
-              date: 'Jan 10, 2022',
-              address: 'Ayub Pak, pindi ',
-              time: '12:30PM  ',
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Divider(
-              height: 1,
-            ),
-            SizedBox(
+            const Divider(),
+            const SizedBox(
               height: 10,
             ),
             EventsInfoWidget(
@@ -115,14 +86,13 @@ class _EventScreenState extends State<EventScreen> {
               date: 'Jan 10, 2022',
               address: 'Ayub Pak, pindi ',
               time: '12:30PM  ',
+              isSlidable: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
-              height: 1,
-            ),
-            SizedBox(
+            const Divider(),
+            const SizedBox(
               height: 10,
             ),
             EventsInfoWidget(
@@ -131,47 +101,30 @@ class _EventScreenState extends State<EventScreen> {
               date: 'Jan 10, 2022',
               address: 'Ayub Pak, pindi ',
               time: '12:30PM  ',
+              isSlidable: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Divider(
-              height: 1,
+            const Divider(),
+            const SizedBox(
+              height: 10,
             ),
+            EventsInfoWidget(
+              imagePath: 'assets/images/event1.png',
+              title: 'PixaBay Event',
+              date: 'Jan 10, 2022',
+              address: 'Ayub Pak, pindi ',
+              time: '12:30PM  ',
+              isSlidable: false,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: Color(0xff5AB964),
-        elevation: 5,
-        selectedLabelStyle: TextStyle(
-            fontSize: 12, fontFamily: 'Poppins', fontWeight: FontWeight.w300),
-        unselectedLabelStyle: TextStyle(
-            fontSize: 12, fontFamily: 'Poppins', fontWeight: FontWeight.w300),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'All Events',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined),
-            label: 'My Events',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outlined),
-            label: 'Profile',
-          ),
-        ],
-      ),
     );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 }

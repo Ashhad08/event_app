@@ -14,7 +14,7 @@ class OTPContainer extends StatelessWidget {
         border: Border.all(color: Colors.grey.shade300),
       ),
       child: TextFormField(
-        decoration: new InputDecoration(
+        decoration: const InputDecoration(
           border: InputBorder.none,
         ),
         keyboardType: TextInputType.number,

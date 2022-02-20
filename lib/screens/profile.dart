@@ -10,8 +10,6 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,34 +23,34 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text('Profile',
+                  const Text('Profile',
                       style: TextStyle(
                           fontSize: 21,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600)),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  Text('You can update your profile info',
+                  const Text('You can update your profile info',
                       style: TextStyle(
                           fontSize: 14,
                           fontFamily: 'Poppins',
                           color: Color(0xff7E7E7E),
                           fontWeight: FontWeight.w500)),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Center(
                     child: ProfileScreenCircleAvatar(
                         imagePath: 'assets/images/profile2.png'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Center(
+                  const Center(
                     child: Text('User Name',
                         style: TextStyle(
                             fontSize: 21,
@@ -62,56 +60,25 @@ class _ProfileState extends State<Profile> {
                 ],
               ),
             ),
-            UpdateProfileWidget(infoText: 'Update Information',),
-            Divider(
-              height: 1,
+            UpdateProfileWidget(
+              infoText: 'Update Information',
             ),
-            UpdateProfileWidget(infoText: 'Update Transportation',),
-            Divider(
-              height: 1,
+            const Divider(),
+            UpdateProfileWidget(
+              infoText: 'Update Transportation',
             ),
-            UpdateProfileWidget(infoText: 'Update Entertainment',),
-            Divider(
-              height: 1,
+            const Divider(),
+            UpdateProfileWidget(
+              infoText: 'Update Entertainment',
             ),
-            UpdateProfileWidget(infoText: 'Update Fashion',),
-            Divider(
-              height: 1,
+            const Divider(),
+            UpdateProfileWidget(
+              infoText: 'Update Fashion',
             ),
+            const Divider(),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: Color(0xff5AB964),
-        elevation: 5,
-        selectedLabelStyle: TextStyle(
-            fontSize: 12, fontFamily: 'Poppins', fontWeight: FontWeight.w300),
-        unselectedLabelStyle: TextStyle(
-            fontSize: 12, fontFamily: 'Poppins', fontWeight: FontWeight.w300),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'All Events',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined),
-            label: 'My Events',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outlined),
-            label: 'Profile',
-          ),
-        ],
-      ),
     );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 }

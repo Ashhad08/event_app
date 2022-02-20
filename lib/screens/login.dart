@@ -1,6 +1,9 @@
+import 'package:event_app/screens/sign_up.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:event_app/widgets/textformfield.dart';
 import 'package:flutter/material.dart';
+
+import 'forgot_password.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -15,7 +18,6 @@ class _LoginState extends State<Login> {
     TextEditingController _emailController = TextEditingController();
     TextEditingController _pswdController = TextEditingController();
     final _formKey = GlobalKey<FormState>();
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
@@ -27,113 +29,127 @@ class _LoginState extends State<Login> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Login',
+                const Text('Login',
                     style: TextStyle(
                         fontSize: 24,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400)),
+                // ignore: prefer_const_constructors
                 Text(
                   'Access account',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 14,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w300),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text('Email',
+                const Text('Email',
                     style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormFieldWidget(
-                  isObscureText: false,
-                  isSuffixIcon: false,
-                  isFilled: true,
-                  isPrefixIcon: false,
-                  isHintText: false,
                   controller: _emailController,
                   validator: (val) {
-                    if (val!.isEmpty) {
+                    if (val.isEmpty) {
                       return "Kindly Enter Your Email";
                     } else {
                       return null;
                     }
                   },
+                  isHintText: false,
+                  isFilled: true,
+                  isPrefixIcon: false,
+                  // onPwdTap: () {},
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text('Password',
+                const Text('Password',
                     style: TextStyle(
                         fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormFieldWidget(
-                    isObscureText: true,
-                    isSuffixIcon: true,
-                    isFilled: true,
-                    isPrefixIcon: false,
-                    suffixIcon: Icons.visibility_off,
-                    isHintText: false,
-                    controller: _pswdController,
-                    validator: (val) {
-                      if (val!.isEmpty) {
-                        return "Kindly Enter Your Password";
-                      } else if (val!.length < 7) {
-                        return "Kindly Enter full passwrod";
-                      } else {
-                        return null;
-                      }
-                    }),
-                SizedBox(
+                  isPrefixIcon: false,
+                  isHintText: false,
+                  isFilled: true,
+                  isVisible: true,
+                  isPasswordField: true,
+                  controller: _pswdController,
+                  validator: (val) {
+                    if (val.isEmpty) {
+                      return "Kindly Enter Your Password";
+                    } else if (val.length < 7) {
+                      return "Kindly Enter full passwrod";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text('Forgot your password?',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500)),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ForgotPassword()));
+                      },
+                      child: const Text('Forgot your password?',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500)),
+                    ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 RaisedButtonWidget(
                   buttonText: 'Sign in',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      return null;
+                      return;
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('I don\'t have an account.',
+                    const Text('I don\'t have an account.',
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500)),
-                    Text('Sign up',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff5AB964)))
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const SignUp()));
+                      },
+                      child: const Text('Sign up',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff5AB964))),
+                    )
                   ],
                 )
               ],

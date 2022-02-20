@@ -1,3 +1,5 @@
+import 'package:event_app/screens/location_access.dart';
+import 'package:event_app/screens/verification.dart';
 import 'package:event_app/widgets/raised_button.dart';
 import 'package:event_app/widgets/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +21,15 @@ class _NewPasswordState extends State<NewPassword> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Verification()));
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       backgroundColor: Colors.white,
@@ -35,7 +43,7 @@ class _NewPasswordState extends State<NewPassword> {
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     SizedBox(
                       height: 90,
                     ),
@@ -55,7 +63,7 @@ class _NewPasswordState extends State<NewPassword> {
                   Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.black26, width: 0.2),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(20.0),
                           topLeft: Radius.circular(20.0),
                         )),
@@ -64,89 +72,88 @@ class _NewPasswordState extends State<NewPassword> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Center(
+                          const Center(
                               child: Text('Create New password',
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w500))),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
-                          Center(
+                          const Center(
                               child: Text('Enter your new password',
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontFamily: 'Poppins',
                                       color: Color(0xff7E7E7E),
                                       fontWeight: FontWeight.w300))),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
-                          Text('New Password',
+                          const Text('New Password',
                               style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500)),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           TextFormFieldWidget(
-                            isObscureText: true,
-                            isSuffixIcon: true,
-                            isFilled: false,
+                            isVisible: true,
+                            isPasswordField: true,
+                            isFilled: true,
                             isPrefixIcon: false,
                             isHintText: false,
-                            suffixIcon: Icons.visibility_off,
                             controller: _newPswdController,
                             validator: (val) {
-                              if (val!.isEmpty) {
+                              if (val.isEmpty) {
                                 return "Kindly Enter Your Password";
-                              } else if (val!.length < 7) {
-                                return "Password must be more then 8 characters";
+                              } else if (val.length < 7) {
+                                return "Kindly Enter full password";
                               } else {
                                 return null;
                               }
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text('Confirm Password',
+                          const Text('Confirm Password',
                               style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500)),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           TextFormFieldWidget(
-                            isObscureText: true,
-                            isSuffixIcon: true,
-                            isFilled: false,
+                            isPasswordField: true,
+                            isVisible: true,
+                            isFilled: true,
                             isPrefixIcon: false,
                             isHintText: false,
-                            suffixIcon: Icons.visibility_off,
                             controller: _confirmpswdController,
                             validator: (val) {
-                              if (val!.isEmpty) {
+                              if (val.isEmpty) {
                                 return "Kindly Confirm Your password";
-                              } else if (!(_confirmpswdController ==
-                                  _newPswdController)) {
-                                return 'Password Dose not matched!';
                               } else {
                                 return null;
                               }
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           RaisedButtonWidget(
                             buttonText: "Save",
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                return null;
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LocationAccess()));
                               }
                             },
                           )
